@@ -4,7 +4,7 @@ let game_window
 function spawn() {
     let spawned = {}
     spawned.x_pos = Math.random()
-    spawned.y_pos = 1.1
+    spawned.y_pos = 1.05
     spawned.x_vel = 0.001 * (0.5 - spawned.x_pos)
     spawned.y_vel = -0.001
 
