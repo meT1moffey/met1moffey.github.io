@@ -17,10 +17,10 @@ body {
 
 #content {
     background-image: url('/images/game-bg.jpg');
-    background-size: 100%;
-    background-repeat: no-repeat;
+    background-size: cover;
     flex-grow: 1;
     max-height: 800px;
+    overflow: hidden;
 }
 
 #footer {
