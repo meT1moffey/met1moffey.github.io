@@ -43,7 +43,7 @@ function upgrade() {
         fruit.elem.style.left = game_window.offsetLeft + fruit.x_pos * game_window.offsetWidth  + "px"
         fruit.elem.style.top  = game_window.offsetTop  + fruit.y_pos * game_window.offsetHeight + "px"
         console.log(fruit)
-        /////
+        /////////
     }
     fruits = remain
 
