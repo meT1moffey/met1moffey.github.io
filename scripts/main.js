@@ -1,14 +1,16 @@
 let fruits = []
 let game_window
 
-let base_vel = 0.004
-let gravity = base_vel * base_vel
+let base_vel = 0.02
+let gravity = 0.75 * base_vel * base_vel
 
 function spawn() {
     let spawned = {}
-    spawned.x_pos = Math.random()
+    let x_peak = 0.2 + 0.6 * Math.random()
+    let x_offset = Math.random() * 0.4 - 0.2
+    spawned = x_peak + x_offset
     spawned.y_pos = 1
-    spawned.x_vel = base_vel * (0.5 - spawned.x_pos)
+    spawned.x_vel = -base_vel * x_offset
     spawned.y_vel = -base_vel * (0.9 + 0.2 * Math.random())
 
     let elem = document.createElement("span")
