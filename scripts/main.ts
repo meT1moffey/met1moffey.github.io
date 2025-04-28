@@ -22,10 +22,12 @@ function spawn() {
     game_window.appendChild(elem)
     spawned.elem = elem
 
+    console.log("fruit spawned")
     fruits.push(spawned)
 }
 
 function upgrade() {
+    console.log("upgraded")
     if(fruits.length == 0) {
         spawn()
     }
@@ -40,6 +42,9 @@ function upgrade() {
         if(fruit.y_pos < 1 || fruit.y_vel < 0) {
             remain.push(fruit)
         }
+        else {
+            console.log("fruit despawned")
+        }
 
         fruit.elem["style"].left = fruit.x_pos * game_window.clientWidth
         fruit.elem["style"].top  = fruit.y_pos * game_window.clientHeight
@@ -51,5 +56,6 @@ function upgrade() {
 
 window.onload = function() {
     game_window = document.getElementById("content")!
+    console.log("app started")
     upgrade()
 }
