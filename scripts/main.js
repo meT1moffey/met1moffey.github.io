@@ -1,7 +1,7 @@
 let fruits = []
 let game_window
 
-let base_vel = 0.0027
+let base_vel = 0.004
 let gravity = base_vel * base_vel
 
 function spawn() {
