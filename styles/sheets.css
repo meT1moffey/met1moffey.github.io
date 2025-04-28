@@ -1,10 +1,11 @@
 @font-face {
     font-family: 'Bonzai';
-    src: '/bonzai.ttf';
+    src: url('/bonzai.ttf');
 }
 
 body {
     font-family: 'Bonzai';
+    font-size: 20px;
 }
 
 #footer {
