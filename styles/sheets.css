@@ -3,16 +3,26 @@
     src: url('/bonzai.ttf');
 }
 
+html {
+    height: 100%;
+}
+
 body {
     font-family: 'Bonzai';
     font-size: 20px;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
 }
 
 #content {
     background-image: url('/images/game-bg.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    flex-grow: 1;
+    max-height: 800px;
 }
 
 #footer {
-    position: fixed;
-    bottom: 0;
+    height: 40px;
 }
