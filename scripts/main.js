@@ -1,14 +1,5 @@
-class Fruit {
-    x_pos: number
-    y_pos: number
-    x_vel: number
-    y_vel: number
-
-    elem: Element
-}
-
-let fruits: Array<Fruit> = []
-let game_window: Element
+let fruits = []
+let game_window
 
 function spawn() {
     let spawned = new Fruit()
@@ -32,7 +23,7 @@ function upgrade() {
         spawn()
     }
 
-    let remain : Array<Fruit> = []
+    let remain = []
 
     for(let fruit of fruits) {
         fruit.x_pos += fruit.x_vel
@@ -55,7 +46,7 @@ function upgrade() {
 }
 
 window.onload = function() {
-    game_window = document.getElementById("content")!
+    game_window = document.getElementById("content")
     console.log("app started")
     upgrade()
 }
