@@ -13,7 +13,7 @@ function spawn() {
 
     let elem = document.createElement("span")
     elem.innerHTML = "\ud83c\udf4b" // lemon
-    elem.style.position = 'absolute'
+    elem.className = 'fruit'
     game_window.appendChild(elem)
     spawned.elem = elem
 
@@ -43,8 +43,8 @@ function upgrade() {
             fruit.elem.remove()
         }
 
-        fruit.elem.style.left = game_window.offsetLeft + fruit.x_pos * game_window.offsetWidth  + "px"
-        fruit.elem.style.top  = game_window.offsetTop  + fruit.y_pos * game_window.offsetHeight + "px"
+        fruit.elem.style.left = fruit.x_pos * game_window.offsetWidth  + "px"
+        fruit.elem.style.top  = fruit.y_pos * game_window.offsetHeight + "px"
         console.log(fruit)
     }
     fruits = remain

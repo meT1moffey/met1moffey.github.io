@@ -26,3 +26,8 @@ body {
 #footer {
     height: 40px;
 }
+
+.fruit {
+    position: relative;
+    font-size: 40px;
+}
