@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'Bonzai';
+    src: '/bonzai.ttf';
+}
+
+body {
+    font-family: 'Bonzai';
+}
+
 #footer {
     position: fixed;
     bottom: 0;
