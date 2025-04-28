@@ -18,6 +18,8 @@ function spawn() {
     fruits.push(spawned)
 }
 
+let frameDelay = 1000
+
 function upgrade() {
     if(fruits.length == 0) {
         spawn()
@@ -26,9 +28,9 @@ function upgrade() {
     let remain = []
 
     for(let fruit of fruits) {
-        fruit.x_pos += fruit.x_vel
-        fruit.y_pos += fruit.y_vel
-        fruit.y_vel += 0.1
+        fruit.x_pos += fruit.x_vel / frameDelay
+        fruit.y_pos += fruit.y_vel / frameDelay
+        fruit.y_vel += 0.1 / frameDelay
 
         if(fruit.y_pos < 1 || fruit.y_vel < 0) {
             remain.push(fruit)
@@ -45,7 +47,7 @@ function upgrade() {
     }
     fruits = remain
 
-    setTimeout(upgrade, 1000)
+    setTimeout(upgrade, frameDelay)
 }
 
 window.onload = function() {
