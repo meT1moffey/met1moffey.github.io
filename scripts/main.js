@@ -43,7 +43,7 @@ function upgrade() {
     }
     fruits = remain
 
-    setTimeout(upgrade, 10)
+    setTimeout(upgrade, 100)
 }
 
 window.onload = function() {
