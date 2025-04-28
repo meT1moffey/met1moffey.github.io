@@ -30,7 +30,7 @@ function upgrade() {
     for(let fruit of fruits) {
         fruit.x_pos += fruit.x_vel * frameDelay
         fruit.y_pos += fruit.y_vel * frameDelay
-        fruit.y_vel += 0.001 * frameDelay
+        fruit.y_vel += 0.0001 * frameDelay
 
         if(fruit.y_pos < 1 || fruit.y_vel < 0) {
             remain.push(fruit)
