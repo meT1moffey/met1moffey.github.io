@@ -38,8 +38,8 @@ function upgrade() {
             fruit.elem.remove()
         }
 
-        fruit.elem.style.left = fruit.x_pos * game_window.clientWidth
-        fruit.elem.style.top  = fruit.y_pos * game_window.clientHeight
+        fruit.elem.style.left = fruit.x_pos * game_window.clientWidth + "px"
+        fruit.elem.style.top  = fruit.y_pos * game_window.clientHeight + "px"
     }
     fruits = remain
 
