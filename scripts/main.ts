@@ -59,3 +59,5 @@ window.onload = function() {
     console.log("app started")
     upgrade()
 }
+
+console.log("script loaded")
