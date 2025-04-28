@@ -1,7 +1,7 @@
 let fruits = []
 let game_window
 
-let base_vel = 0.003
+let base_vel = 0.002
 let gravity = base_vel * base_vel
 
 function spawn() {
@@ -21,7 +21,7 @@ function spawn() {
     fruits.push(spawned)
 }
 
-let frameDelay = 10
+let frameDelay = 1
 
 function upgrade() {
     if(fruits.length == 0) {
