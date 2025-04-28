@@ -19,7 +19,6 @@ function spawn() {
 }
 
 function upgrade() {
-    console.log("upgraded")
     if(fruits.length == 0) {
         spawn()
     }
@@ -36,6 +35,7 @@ function upgrade() {
         }
         else {
             console.log("fruit despawned")
+            fruit.elem.remove()
         }
 
         fruit.elem.style.left = fruit.x_pos * game_window.clientWidth
