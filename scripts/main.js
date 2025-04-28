@@ -5,8 +5,8 @@ function spawn() {
     let spawned = {}
     spawned.x_pos = Math.random()
     spawned.y_pos = 1.1
-    spawned.x_vel = (0.5 - spawned.x_pos)
-    spawned.y_vel = -1
+    spawned.x_vel = 10 * (0.5 - spawned.x_pos)
+    spawned.y_vel = -10
 
     let elem = document.createElement("span")
     elem.innerHTML = "\ud83c\udf4b" // lemon
