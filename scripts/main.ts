@@ -19,6 +19,7 @@ function spawn() {
 
     let elem = document.createElement("span")
     elem.innerHTML = '\uF34B'
+    game_window.appendChild(elem)
     spawned.elem = elem
 
     fruits.push(spawned)
