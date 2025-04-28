@@ -9,7 +9,7 @@ function spawn() {
     spawned.y_vel = -1
 
     let elem = document.createElement("span")
-    elem.innerHTML = '\uF34B'
+    elem.innerHTML = "\ud83c\udf4b" // lemon
     elem.style.position = 'absolute'
     game_window.appendChild(elem)
     spawned.elem = elem
