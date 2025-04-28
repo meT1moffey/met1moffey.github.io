@@ -10,6 +10,7 @@ function spawn() {
 
     let elem = document.createElement("span")
     elem.innerHTML = '\uF34B'
+    elem.style.position = 'absolute'
     game_window.appendChild(elem)
     spawned.elem = elem
 
@@ -37,8 +38,8 @@ function upgrade() {
             console.log("fruit despawned")
         }
 
-        fruit.elem["style"].left = fruit.x_pos * game_window.clientWidth
-        fruit.elem["style"].top  = fruit.y_pos * game_window.clientHeight
+        fruit.elem.style.left = fruit.x_pos * game_window.clientWidth
+        fruit.elem.style.top  = fruit.y_pos * game_window.clientHeight
     }
     fruits = remain
 
@@ -47,7 +48,6 @@ function upgrade() {
 
 window.onload = function() {
     game_window = document.getElementById("content")
-    console.log("app started")
     upgrade()
 }
 
