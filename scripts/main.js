@@ -1,12 +1,15 @@
 let fruits = []
 let game_window
 
+let base_vel = 0.003
+let gravity = base_vel * base_vel
+
 function spawn() {
     let spawned = {}
     spawned.x_pos = Math.random()
-    spawned.y_pos = 1.05
-    spawned.x_vel = 0.01 * (0.5 - spawned.x_pos)
-    spawned.y_vel = -0.01
+    spawned.y_pos = 1
+    spawned.x_vel = base_vel * (0.5 - spawned.x_pos)
+    spawned.y_vel = -base_vel * (0.9 + 0.2 * Math.random())
 
     let elem = document.createElement("span")
     elem.innerHTML = "\ud83c\udf4b" // lemon
@@ -30,7 +33,7 @@ function upgrade() {
     for(let fruit of fruits) {
         fruit.x_pos += fruit.x_vel * frameDelay
         fruit.y_pos += fruit.y_vel * frameDelay
-        fruit.y_vel += 0.0001 * frameDelay
+        fruit.y_vel += gravity * frameDelay
 
         if(fruit.y_pos < 1 || fruit.y_vel < 0) {
             remain.push(fruit)
