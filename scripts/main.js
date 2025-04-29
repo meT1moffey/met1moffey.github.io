@@ -4,17 +4,25 @@ let game_window
 let base_vel = 0.02
 let gravity = 0.75 * base_vel * base_vel
 
+let fruit_emojis = [
+    "\ud83c\udf4b", // lemon
+    "\ud83c\udf4e", // red apple
+    "\ud83c\udf50", // pear
+    "\ud83c\udf51", // pear
+    "\ud83c\udf53", // strawberry
+]
+
 function spawn() {
     let spawned = {}
     let x_peak = 0.2 + 0.6 * Math.random()
     let x_offset = Math.random() * 0.4 - 0.2
     spawned.x_pos = x_peak + x_offset
-    spawned.y_pos = 1
+    spawned.y_pos = 1.05
     spawned.x_vel = -base_vel * x_offset
     spawned.y_vel = -base_vel * (0.9 + 0.2 * Math.random())
 
     let elem = document.createElement("span")
-    elem.innerHTML = "\ud83c\udf4b" // lemon
+    elem.innerHTML = fruit_emojis[Math.floor(Math.random() * fruit_emojis.length)]
     elem.className = 'fruit'
     game_window.appendChild(elem)
     spawned.elem = elem
@@ -24,9 +32,10 @@ function spawn() {
 }
 
 let frameDelay = 1
+let fruit_count = 1
 
 function upgrade() {
-    if(fruits.length == 0) {
+    if(fruits.length < fruit_count) {
         spawn()
     }
 
