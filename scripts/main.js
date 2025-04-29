@@ -63,7 +63,7 @@ function upgrade() {
     }
     fruits = remain
 
-    getElementById("score").innerHTML = score
+    document.getElementById("score").innerHTML = score
 
     setTimeout(upgrade, frameDelay)
 }
