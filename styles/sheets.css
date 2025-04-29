@@ -29,7 +29,11 @@ body {
     height: 40px;
 }
 
+.fruit-box {
+    position: relative 0 0;
+}
+
 .fruit {
-    position: relative;
+    position: absolute;
     font-size: 120px;
 }
