@@ -17,7 +17,7 @@ function spawn() {
     let x_peak = 0.2 + 0.6 * Math.random()
     let x_offset = Math.random() * 0.4 - 0.2
     spawned.x_pos = x_peak + x_offset
-    spawned.y_pos = 1
+    spawned.y_pos = 1.05
     spawned.x_vel = -base_vel * x_offset
     spawned.y_vel = -base_vel * (0.9 + 0.2 * Math.random())
 
