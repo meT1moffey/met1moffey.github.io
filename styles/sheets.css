@@ -30,6 +30,6 @@ body {
 }
 
 .fruit {
-    position: relative;
+    position: absolute;
     font-size: 120px;
 }
