@@ -33,4 +33,6 @@ body {
 .fruit {
     position: absolute;
     font-size: 120px;
+    user-select: none;
+    font-weight: bold;
 }
