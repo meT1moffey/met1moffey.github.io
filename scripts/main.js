@@ -26,9 +26,9 @@ function spawn() {
     elem.className = 'fruit'
     game_window.appendChild(elem)
     spawned.elem = elem
-    elem.onmouseleave = () => {
+    elem.onmouseenter = () => {
         elem.innerHTML = '+1';
-        elem.onmouseleave = undefined
+        elem.onmouseenter = undefined
     }
 
     fruits.push(spawned)
