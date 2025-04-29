@@ -23,6 +23,7 @@ body {
     flex-grow: 1;
     max-height: 800px;
     overflow: hidden;
+    position: relative;
 }
 
 #footer {
@@ -30,6 +31,6 @@ body {
 }
 
 .fruit {
-    position: relative;
+    position: absolute;
     font-size: 120px;
 }
