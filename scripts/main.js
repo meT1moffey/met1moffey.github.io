@@ -24,6 +24,7 @@ function spawn() {
     let box = document.createElement("div")
     box.className = 'fruit-box'
     game_window.appendChild(box)
+    spawned.box = box
 
     let elem = document.createElement("span")
     elem.innerHTML = fruit_emojis[Math.floor(Math.random() * fruit_emojis.length)]
@@ -55,7 +56,7 @@ function upgrade() {
         }
         else {
             console.log("fruit despawned")
-            fruit.elem.remove()
+            fruit.box.remove()
         }
 
         fruit.elem.style.left = game_window.clientLeft + fruit.x_pos * game_window.clientWidth  + "px"
