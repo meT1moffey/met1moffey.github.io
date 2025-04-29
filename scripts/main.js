@@ -26,8 +26,11 @@ function spawn() {
     elem.className = 'fruit'
     game_window.appendChild(elem)
     spawned.elem = elem
+    elem.onmouseleave = () => {
+        elem.innerHTML = '+1';
+        elem.onmouseleave = undefined
+    }
 
-    console.log("fruit spawned")
     fruits.push(spawned)
 }
 
@@ -50,7 +53,6 @@ function upgrade() {
             remain.push(fruit)
         }
         else {
-            console.log("fruit despawned")
             fruit.elem.remove()
         }
 
