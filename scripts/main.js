@@ -31,7 +31,7 @@ function spawn() {
     fruits.push(spawned)
 }
 
-let frameDelay = 1
+let frameDelay = 20
 let fruit_count = 1
 
 function upgrade() {
@@ -59,13 +59,11 @@ function upgrade() {
         console.log(fruit)
     }
     fruits = remain
-
-    setTimeout(upgrade, frameDelay)
 }
 
 window.onload = function() {
     game_window = document.getElementById("content")
-    upgrade()
+    setInterval(upgrade, frameDelay)
 }
 
 console.log("script loaded")
