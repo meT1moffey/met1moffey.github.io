@@ -1,8 +1,8 @@
 let fruits = []
 let game_window
 
-let base_vel = 0.002
-let gravity = 0.67 * base_vel * base_vel
+let base_vel = 0.02
+let gravity = 0.75 * base_vel * base_vel
 
 let fruit_emojis = [
     "\ud83c\udf4b", // lemon
@@ -35,7 +35,7 @@ function spawn() {
     fruits.push(spawned)
 }
 
-let frameDelay = 16 // 60 fps
+let frameDelay = 1
 let fruit_count = 3
 
 function upgrade() {
@@ -58,15 +58,18 @@ function upgrade() {
             fruit.elem.remove()
         }
 
-        fruit.elem.style.left = game_window.clientLeft + fruit.x_pos * game_window.clientWidth  + "px"
-        fruit.elem.style.top  = game_window.clientTop  + fruit.y_pos * game_window.clientHeight + "px"
+        fruit.elem.style.left = fruit.x_pos * game_window.clientWidth  + "px"
+        fruit.elem.style.top  = fruit.y_pos * game_window.clientHeight + "px"
+        console.log(fruit)
     }
     fruits = remain
+
+    setTimeout(upgrade, frameDelay)
 }
 
 window.onload = function() {
     game_window = document.getElementById("content")
-    setInterval(upgrade, frameDelay)
+    upgrade()
 }
 
 console.log("script loaded")
