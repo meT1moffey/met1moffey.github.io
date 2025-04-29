@@ -32,7 +32,7 @@ function spawn() {
 }
 
 let frameDelay = 1
-let fruit_count = 1
+let fruit_count = 3
 
 function upgrade() {
     if(fruits.length < fruit_count) {
