@@ -26,11 +26,11 @@ function spawn() {
     elem.className = 'fruit'
     game_window.appendChild(elem)
     spawned.elem = elem
-    elem.onmouseenter = () => {
+    elem.addEventListener("pointerenter", () => {
         elem.innerHTML = '+1';
         elem.onmouseenter = undefined
         score += 1
-    }
+    })
 
     fruits.push(spawned)
 }
