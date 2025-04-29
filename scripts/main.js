@@ -29,13 +29,15 @@ function spawn() {
     elem.onmouseenter = () => {
         elem.innerHTML = '+1';
         elem.onmouseenter = undefined
+        score += 1
     }
 
     fruits.push(spawned)
 }
 
+let score = 0
 let frameDelay = 1
-let fruit_count = 3
+let fruit_count = 5
 
 function upgrade() {
     if(fruits.length < fruit_count) {
@@ -43,7 +45,6 @@ function upgrade() {
     }
 
     let remain = []
-
     for(let fruit of fruits) {
         fruit.x_pos += fruit.x_vel * frameDelay
         fruit.y_pos += fruit.y_vel * frameDelay
@@ -61,6 +62,8 @@ function upgrade() {
         console.log(fruit)
     }
     fruits = remain
+
+    getElementById("score").innerHTML = score
 
     setTimeout(upgrade, frameDelay)
 }
