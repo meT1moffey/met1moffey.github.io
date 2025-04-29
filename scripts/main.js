@@ -21,14 +21,10 @@ function spawn() {
     spawned.x_vel = -base_vel * x_offset
     spawned.y_vel = -base_vel * (0.9 + 0.2 * Math.random())
 
-    let box = document.createElement("div")
-    box.className = 'fruit-box'
-    game_window.appendChild(box)
-
     let elem = document.createElement("span")
     elem.innerHTML = fruit_emojis[Math.floor(Math.random() * fruit_emojis.length)]
     elem.className = 'fruit'
-    box.appendChild(elem)
+    game_window.appendChild(elem)
     spawned.elem = elem
 
     console.log("fruit spawned")
@@ -36,7 +32,7 @@ function spawn() {
 }
 
 let frameDelay = 1
-let fruit_count = 3
+let fruit_count = 1
 
 function upgrade() {
     if(fruits.length < fruit_count) {
