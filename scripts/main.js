@@ -1,7 +1,7 @@
 let fruits = []
 let game_window
 
-let base_vel = 0.02
+let base_vel = 0.001
 let gravity = 0.75 * base_vel * base_vel
 
 let fruit_emojis = [
@@ -68,7 +68,7 @@ function upgrade() {
 
     document.getElementById("score").innerHTML = score
 
-    setInterval(upgrade, 10)
+    setInterval(upgrade, 20)
 }
 
 window.onload = function() {
