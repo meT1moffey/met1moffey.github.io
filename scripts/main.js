@@ -37,12 +37,12 @@ function spawn() {
 
 let score = 0
 let fruit_count = 5
+let hp = 5
 let last_tick;
 
 function upgrade() {
     let delta = Date.now() - last_tick
     last_tick = Date.now()
-    console.log(delta)
 
     if(fruits.length < fruit_count) {
         spawn()
@@ -67,6 +67,7 @@ function upgrade() {
     fruits = remain
 
     document.getElementById("score").innerHTML = score
+    document.getElementById("hp").innerHTML = "❤" * hp
 }
 
 window.onload = function() {
