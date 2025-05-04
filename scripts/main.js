@@ -36,19 +36,22 @@ function spawn() {
 }
 
 let score = 0
-let frameDelay = 1
 let fruit_count = 5
+let last_tick;
 
 function upgrade() {
+    let delta = Date.now() - last_tick
+    last_tick = Date.now()
+
     if(fruits.length < fruit_count) {
         spawn()
     }
 
     let remain = []
     for(let fruit of fruits) {
-        fruit.x_pos += fruit.x_vel * frameDelay
-        fruit.y_pos += fruit.y_vel * frameDelay
-        fruit.y_vel += gravity * frameDelay
+        fruit.x_pos += fruit.x_vel * delta
+        fruit.y_pos += fruit.y_vel * delta
+        fruit.y_vel += gravity * delta
 
         if(fruit.y_pos < 1 || fruit.y_vel < 0) {
             remain.push(fruit)
@@ -65,11 +68,12 @@ function upgrade() {
 
     document.getElementById("score").innerHTML = score
 
-    setTimeout(upgrade, frameDelay)
+    upgrade()
 }
 
 window.onload = function() {
     game_window = document.getElementById("content")
+    last_tick = Date.now();
     upgrade()
 }
 
