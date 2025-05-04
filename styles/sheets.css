@@ -37,8 +37,10 @@ body {
     font-size: 120px;
     user-select: none;
     font-weight: bold;
+    font-family: "Segoe UI Emoji";
 }
 
 #hp {
     float: right;
+    font-family: "Segoe UI Emoji";
 }

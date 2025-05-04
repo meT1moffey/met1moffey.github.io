@@ -28,6 +28,7 @@ function spawn() {
     spawned.elem = elem
     elem.onmouseenter = () => {
         elem.innerHTML = '+1';
+        elem.style.fontFamily = 'Bonzai';
         elem.onmouseenter = () => {}
         score += 1
     }
