@@ -42,5 +42,6 @@ body {
 
 #hp {
     float: right;
+    font-variant-emoji: emoji;
     font-family: "Segoe UI Emoji";
 }
