@@ -85,7 +85,7 @@ function upgrade() {
 window.onload = function() {
     game_window = document.getElementById("content")
 
-    let save_form = getElementById("save_rec")
+    let save_form = document.getElementById("save_rec")
     save_form.onsubmit = (event) => {
         event.preventDefault()
         let feedback = document.getElementById("feedback")
@@ -103,5 +103,3 @@ window.onload = function() {
     last_tick = Date.now();
     setInterval(upgrade, 10)
 }
-
-console.log("script loaded")
