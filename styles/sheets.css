@@ -22,6 +22,7 @@ body {
     background-image: url('/images/game-bg.jpg');
     background-size: cover;
     flex-grow: 1;
+    font-size: 40px;
     overflow: hidden;
     position: relative;
     touch-action: none;
@@ -36,4 +37,8 @@ body {
     font-size: 120px;
     user-select: none;
     font-weight: bold;
+}
+
+#hp {
+    float: right;
 }

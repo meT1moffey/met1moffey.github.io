@@ -67,7 +67,7 @@ function upgrade() {
     fruits = remain
 
     document.getElementById("score").innerHTML = score
-    document.getElementById("hp").innerHTML = "❤" * hp
+    document.getElementById("hp").innerHTML = "❤".repeat(hp)
 }
 
 window.onload = function() {
