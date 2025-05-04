@@ -42,6 +42,7 @@ let last_tick;
 function upgrade() {
     let delta = Date.now() - last_tick
     last_tick = Date.now()
+    console.log(delta)
 
     if(fruits.length < fruit_count) {
         spawn()
@@ -62,7 +63,6 @@ function upgrade() {
 
         fruit.elem.style.left = fruit.x_pos * game_window.clientWidth  + "px"
         fruit.elem.style.top  = fruit.y_pos * game_window.clientHeight + "px"
-        console.log(fruit)
     }
     fruits = remain
 
