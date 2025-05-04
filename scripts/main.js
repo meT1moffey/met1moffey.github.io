@@ -28,7 +28,7 @@ function spawn() {
     spawned.elem = elem
     elem.cutted = false
     elem.onmouseenter = () => {
-        if(elem.cutted)
+        if(elem.cutted || !playing)
             return
         elem.innerHTML = '+1'
         elem.style.fontFamily = 'Bonzai'
