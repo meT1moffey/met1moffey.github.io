@@ -67,14 +67,12 @@ function upgrade() {
     fruits = remain
 
     document.getElementById("score").innerHTML = score
-
-    setInterval(upgrade, 20)
 }
 
 window.onload = function() {
     game_window = document.getElementById("content")
     last_tick = Date.now();
-    upgrade()
+    setInterval(upgrade, 20)
 }
 
 console.log("script loaded")
