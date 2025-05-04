@@ -88,15 +88,15 @@ window.onload = function() {
     let save_form = getElementById("save_rec")
     save_form.onsubmit = (event) => {
         event.preventDefault()
-        let feedback = getElementById("feedback")
+        let feedback = document.getElementById("feedback")
         if(playing) {
             feedback.innerHTML = "Сначала доиграйте"
             return
         }
         
-        let name = getElementById("name").value
+        let name = document.getElementById("name").value
 
-        
+
         feedback.innerHTML = `Сохранен рекорд "${name}" - ${score}`
     }
 
