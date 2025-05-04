@@ -28,7 +28,7 @@ function spawn() {
     spawned.elem = elem
     elem.onmouseenter = () => {
         elem.innerHTML = '+1';
-        elem.onmouseenter = undefined
+        elem.onmouseenter = () => {}
         score += 1
     }
 
@@ -72,7 +72,7 @@ function upgrade() {
 window.onload = function() {
     game_window = document.getElementById("content")
     last_tick = Date.now();
-    setInterval(upgrade, 20)
+    setInterval(upgrade, 10)
 }
 
 console.log("script loaded")
