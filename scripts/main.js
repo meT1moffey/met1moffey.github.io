@@ -82,6 +82,10 @@ function upgrade() {
     document.getElementById("hp").innerHTML = "❤".repeat(hp)
 }
 
+function getCookie(name) {
+    return document.cookie.split("; ").find((row) => row.startsWith(name + "="))?.split('=')[1]
+}
+
 window.onload = function() {
     game_window = document.getElementById("content")
 
@@ -95,9 +99,16 @@ window.onload = function() {
         }
         
         let name = document.getElementById("name").value
+        let prev = getCookie(name)
+        let output
+        if(prev === null || Number(prev) < score) {
+            output = `Новый рекорд! "${name}" - ${score}`
+            document.cookie = `${name}=${score}; expires=Fri, 31 Dec 9999 23:59:59 GMT;`
+        }
+        else
+            output = `Лучший счет "${name}" - ${score}`
 
-
-        feedback.innerHTML = `Сохранен рекорд "${name}" - ${score}`
+        feedback.innerHTML = output
     }
 
     last_tick = Date.now();
