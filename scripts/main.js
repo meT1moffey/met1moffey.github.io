@@ -26,10 +26,13 @@ function spawn() {
     elem.className = 'fruit'
     game_window.appendChild(elem)
     spawned.elem = elem
+    elem.cutted = false
     elem.onmouseenter = () => {
-        elem.innerHTML = '+1';
-        elem.style.fontFamily = 'Bonzai';
-        elem.onmouseenter = () => {}
+        if(elem.cutted)
+            return
+        elem.innerHTML = '+1'
+        elem.style.fontFamily = 'Bonzai'
+        elem.cutted = true
         score += 1
     }
 
@@ -39,9 +42,12 @@ function spawn() {
 let score = 0
 let fruit_count = 5
 let hp = 5
-let last_tick;
+let last_tick
+let playing = true
 
 function upgrade() {
+    if(!playing)
+        return
     let delta = Date.now() - last_tick
     last_tick = Date.now()
 
@@ -59,6 +65,11 @@ function upgrade() {
             remain.push(fruit)
         }
         else {
+            if(!fruit.elem.cutted) {
+                hp--
+                if(hp == 0)
+                    playing = false
+            }
             fruit.elem.remove()
         }
 
