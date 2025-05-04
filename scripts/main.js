@@ -84,6 +84,22 @@ function upgrade() {
 
 window.onload = function() {
     game_window = document.getElementById("content")
+
+    let save_form = getElementById("save_rec")
+    save_form.onsubmit = (event) => {
+        event.preventDefault()
+        let feedback = getElementById("feedback")
+        if(playing) {
+            feedback.innerHTML = "Сначала доиграйте"
+            return
+        }
+        
+        let name = getElementById("name").value
+
+        
+        feedback.innerHTML = `Сохранен рекорд "${name}" - ${score}`
+    }
+
     last_tick = Date.now();
     setInterval(upgrade, 10)
 }
