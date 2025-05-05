@@ -2,7 +2,7 @@ let fruits = []
 let game_window
 
 let base_vel = 0.001
-let gravity = 0.75 * base_vel * base_vel
+let gravity = () => 0.75 * base_vel * base_vel
 
 let fruit_emojis = [
     "\ud83c\udf4b", // lemon
@@ -43,7 +43,7 @@ let score = 0
 let fruit_count = 5
 let hp = 5
 let last_tick
-let playing = true
+let playing = false
 
 function upgrade() {
     if(!playing)
@@ -59,7 +59,7 @@ function upgrade() {
     for(let fruit of fruits) {
         fruit.x_pos += fruit.x_vel * delta
         fruit.y_pos += fruit.y_vel * delta
-        fruit.y_vel += gravity * delta
+        fruit.y_vel += gravity() * delta
 
         if(fruit.y_pos < 1 || fruit.y_vel < 0) {
             remain.push(fruit)
@@ -67,8 +67,11 @@ function upgrade() {
         else {
             if(!fruit.elem.cutted) {
                 hp--
-                if(hp == 0)
+                if(hp == 0) {
                     playing = false
+                    let replay = document.getElementById("replay")
+                    replay.style.display = ""
+                }
             }
             fruit.elem.remove()
         }
@@ -88,7 +91,7 @@ function updateTable() {
     let records = []
     for(let record of document.cookie.split("; "))
         records.push(record.split('='))
-    records.sort((a, b) => b[1] - a[1])
+    records.sort((a, b) => [b[1] - a[1], a[0] - b[0]])
     records.slice(0, 10)
     
     record_table.innerHTML = ""
@@ -104,6 +107,22 @@ function updateTable() {
         score.innerHTML = record[1]
         tr.appendChild(score)
     }
+}
+
+function start() {
+    let replay = document.getElementById("replay")
+    replay.style.display = "none"
+
+    for(let fruit of fruits) {
+        fruit.elem.remove()
+    }
+    fruits = []
+
+    hp = 5
+    score = 0
+    last_tick = Date.now()
+
+    playing = true
 }
 
 window.onload = function() {

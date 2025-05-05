@@ -49,3 +49,14 @@ body {
 #record_table {
     display: none;
 }
+
+#replay {
+    display: flex;
+    background-color: #fff8;
+    height: 100%;
+}
+
+#replay_btn {
+    margin: auto;
+    padding: 10px;
+}
