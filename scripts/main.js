@@ -79,7 +79,7 @@ function upgrade() {
     fruits = remain
 
     document.getElementById("score").innerHTML = score
-    document.getElementById("hp").innerHTML = "❤".repeat(hp)
+    document.getElementById("hp").innerHTML = hp > 0 ? "❤".repeat(hp) : ""
 }
 
 let record_table
@@ -135,6 +135,7 @@ window.onload = function() {
     updateTable()
 
     document.getElementById("showtable").onclick = () => {
+        console.log(record_table.style.display)
         if(record_table.style.display === "block")
             record_table.style.display = "none"
         else
