@@ -45,3 +45,7 @@ body {
     font-variant-emoji: emoji;
     font-family: "Segoe UI Emoji";
 }
+
+#record_table {
+    display: none;
+}

@@ -82,8 +82,27 @@ function upgrade() {
     document.getElementById("hp").innerHTML = "❤".repeat(hp)
 }
 
-function getCookie(name) {
-    return document.cookie.split("; ").find((row) => row.startsWith(name + "="))?.split('=')[1]
+let record_table
+
+function updateTable() {
+    let records = []
+    for(let record of document.cookie.split("; "))
+        records.push(record.split('='))
+    records.sort((a, b) => b[1] - a[1])
+    
+    record_table.innerHTML = ""
+    for(let record of records) {
+        let tr = document.createElement("tr")
+        record_table.appendChild(tr)
+
+        let name = document.createElement("td")
+        name.innerHTML = record[0]
+        tr.appendChild(name)
+        
+        let score = document.createElement("td")
+        score.innerHTML = record[1]
+        tr.appendChild(score)
+    }
 }
 
 window.onload = function() {
@@ -99,11 +118,12 @@ window.onload = function() {
         }
         
         let name = document.getElementById("name").value
-        let prev = getCookie(name)
+        let prev = document.cookie.split("; ").find((row) => row.startsWith(name + "="))?.split('=')[1]
         let output
         if(prev === undefined || Number(prev) < score) {
             output = `Новый рекорд! "${name}" - ${score}`
             document.cookie = `${name}=${score}; expires=Fri, 31 Dec 9999 23:59:59 GMT;`
+            updateTable()
         }
         else
             output = `Лучший счет "${name}" - ${prev}`
@@ -111,6 +131,16 @@ window.onload = function() {
         feedback.innerHTML = output
     }
 
-    last_tick = Date.now();
+    record_table = document.getElementById("record_table")
+    updateTable()
+
+    document.getElementById("showtable").onclick = () => {
+        if(record_table.style.display === "block")
+            record_table.style.display = "none"
+        else
+            record_table.style.display = "block"
+    }
+
+    last_tick = Date.now()
     setInterval(upgrade, 10)
 }
