@@ -89,6 +89,7 @@ function updateTable() {
     for(let record of document.cookie.split("; "))
         records.push(record.split('='))
     records.sort((a, b) => b[1] - a[1])
+    records.slice(0, 10)
     
     record_table.innerHTML = ""
     for(let record of records) {
