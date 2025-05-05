@@ -101,7 +101,7 @@ window.onload = function() {
         let name = document.getElementById("name").value
         let prev = getCookie(name)
         let output
-        if(prev === null || Number(prev) < score) {
+        if(prev === undefined || Number(prev) < score) {
             output = `Новый рекорд! "${name}" - ${score}`
             document.cookie = `${name}=${score}; expires=Fri, 31 Dec 9999 23:59:59 GMT;`
         }
