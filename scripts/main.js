@@ -106,7 +106,7 @@ window.onload = function() {
             document.cookie = `${name}=${score}; expires=Fri, 31 Dec 9999 23:59:59 GMT;`
         }
         else
-            output = `Лучший счет "${name}" - ${score}`
+            output = `Лучший счет "${name}" - ${prev}`
 
         feedback.innerHTML = output
     }
