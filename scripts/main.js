@@ -1,9 +1,9 @@
 let fruits = []
 let game_window
 
-let base_vel = 0.001
+let base_vel
 let gravity = () => 0.75 * base_vel * base_vel
-let acc = 1e-4
+let acc = 1e-5
 
 let fruit_emojis = [
     "\ud83c\udf4b", // lemon
@@ -51,7 +51,7 @@ function upgrade() {
         return
     let delta = Date.now() - last_tick
     last_tick = Date.now()
-    base_vel += acc * delta
+    base_vel += acc * base_vel * delta
 
     if(fruits.length < fruit_count) {
         spawn()
@@ -123,6 +123,7 @@ function start() {
     hp = 5
     score = 0
     last_tick = Date.now()
+    base_vel = 0.001
 
     playing = true
 }
