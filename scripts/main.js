@@ -157,7 +157,7 @@ window.onload = function() {
     updateTable()
 
     document.getElementById("showtable").onclick = () => {
-        let desc = document.getElementById("records-desc");
+        let desc = document.getElementById("records_desc");
         if(desc.style.display === "block")
             desc.style.display = "none"
         else
