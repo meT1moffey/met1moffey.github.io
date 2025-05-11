@@ -3,6 +3,7 @@ let game_window
 
 let base_vel = 0.001
 let gravity = () => 0.75 * base_vel * base_vel
+let acc = 1e-4
 
 let fruit_emojis = [
     "\ud83c\udf4b", // lemon
@@ -50,6 +51,7 @@ function upgrade() {
         return
     let delta = Date.now() - last_tick
     last_tick = Date.now()
+    base_vel += acc * delta
 
     if(fruits.length < fruit_count) {
         spawn()
@@ -155,12 +157,14 @@ window.onload = function() {
     updateTable()
 
     document.getElementById("showtable").onclick = () => {
-        console.log(record_table.style.display)
-        if(record_table.style.display === "block")
-            record_table.style.display = "none"
+        let desc = document.getElementById("records-desc");
+        if(desc.style.display === "block")
+            desc.style.display = "none"
         else
-            record_table.style.display = "block"
+            desc.style.display = "block"
     }
+
+    document.getElementById("replay").onclick = start
 
     last_tick = Date.now()
     setInterval(upgrade, 10)
