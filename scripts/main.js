@@ -1,6 +1,13 @@
 let fruits = []
 let game_window
 
+let cut_parts = []
+let cut_size = 20
+let cut_shrink = 10
+
+let cut_pos_x
+let cut_pos_y
+
 let base_vel
 let gravity = () => 0.75 * base_vel * base_vel
 let acc = 1e-5
@@ -53,6 +60,19 @@ function upgrade() {
     last_tick = Date.now()
     base_vel += acc * base_vel * delta
 
+    for(let part of cut_parts) {
+        part.size -= cut_shrink * delta
+        part.style.width = part.size + "px"
+        part.style.height = part.size + "px"
+        part.style.borderRadius = part.size / 2 + "px"
+
+        if(part.size <= 0) {
+            part.size = cut_size
+            part.left = cut_pos_x
+            part.top  = cut_pos_y
+        }
+    }
+
     if(fruits.length < fruit_count) {
         spawn()
     }
@@ -69,11 +89,8 @@ function upgrade() {
         else {
             if(!fruit.elem.cutted) {
                 hp--
-                if(hp == 0) {
-                    playing = false
-                    let replay = document.getElementById("replay")
-                    replay.style.display = ""
-                }
+                if(hp == 0)
+                    gameOver()
             }
             fruit.elem.remove()
         }
@@ -123,13 +140,43 @@ function start() {
     hp = 5
     score = 0
     last_tick = Date.now()
-    base_vel = 0.001
+    base_vel = 1e-3
+
+    for(let size = cut_size; i > 0; i -= cut_shrink / 100) {
+        let part = document.createElement("span")
+        part.className = "cut_part"
+
+        part.left = cut_pos_x + "px"
+        part.top  = cut_pos_y + "px"
+
+        part.size = size
+        part.style.width = size + "px"
+        part.style.height = size + "px"
+        part.style.borderRadius = size / 2 + "px"
+
+        game_window.appendChild(part)
+        cut_parts.push(part)
+    }
 
     playing = true
 }
 
+function gameOver() {
+    playing = false
+    let replay = document.getElementById("replay")
+    replay.style.display = ""
+
+    for(let part of cut_parts) {
+        part.remove()
+    }
+}
+
 window.onload = function() {
     game_window = document.getElementById("content")
+    game_window.onmousemove = (event) => {
+        cut_pos_x = event.clientX
+        cut_pos_y = event.clientY
+    }
 
     let save_form = document.getElementById("save_rec")
     save_form.onsubmit = (event) => {
