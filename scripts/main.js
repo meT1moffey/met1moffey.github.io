@@ -2,8 +2,8 @@ let fruits = []
 let game_window
 
 let cut_parts = []
-let cut_size = 20
-let cut_shrink = 10
+let cut_size = 75
+let cut_shrink = 0.2
 
 let cut_pos_x
 let cut_pos_y
@@ -35,7 +35,13 @@ function spawn() {
     game_window.appendChild(elem)
     spawned.elem = elem
     elem.cutted = false
-    elem.onmouseenter = () => {
+
+    let hit = (e) => {
+        if(e.changedTouches !== undefined) {
+            if(cut_pos_x < elem.offsetLeft || elem.offsetLeft + elem.offsetWidth < cut_pos_x || cut_pos_y < elem.offsetTop || elem.offsetTop + elem.offsetHeight < cut_pos_y) {
+                return
+            }
+        }
         if(elem.cutted || !playing)
             return
         elem.innerHTML = '+1'
@@ -43,6 +49,9 @@ function spawn() {
         elem.cutted = true
         score += 1
     }
+    elem.onmouseenter = hit
+    elem.addEventListener("touchstart", hit)
+    document.addEventListener("touchmove", hit)
 
     fruits.push(spawned)
 }
@@ -62,14 +71,14 @@ function upgrade() {
 
     for(let part of cut_parts) {
         part.size -= cut_shrink * delta
-        part.style.width = part.size + "px"
+        part.style.width  = part.size + "px"
         part.style.height = part.size + "px"
         part.style.borderRadius = part.size / 2 + "px"
 
         if(part.size <= 0) {
-            part.size = cut_size
-            part.left = cut_pos_x
-            part.top  = cut_pos_y
+            part.size = cut_size - part.size
+            part.style.left = cut_pos_x + "px"
+            part.style.top  = cut_pos_y + "px"
         }
     }
 
@@ -142,19 +151,19 @@ function start() {
     last_tick = Date.now()
     base_vel = 1e-3
 
-    for(let size = cut_size; i > 0; i -= cut_shrink / 100) {
+    for(let size = cut_size; size > 0; size -= cut_shrink / 3) {
         let part = document.createElement("span")
         part.className = "cut_part"
 
-        part.left = cut_pos_x + "px"
-        part.top  = cut_pos_y + "px"
+        part.style.left = cut_pos_x + "px"
+        part.style.top  = cut_pos_y + "px"
 
         part.size = size
         part.style.width = size + "px"
         part.style.height = size + "px"
         part.style.borderRadius = size / 2 + "px"
 
-        game_window.appendChild(part)
+        document.getElementById("cuts").appendChild(part)
         cut_parts.push(part)
     }
 
@@ -173,10 +182,18 @@ function gameOver() {
 
 window.onload = function() {
     game_window = document.getElementById("content")
-    game_window.onmousemove = (event) => {
-        cut_pos_x = event.clientX
-        cut_pos_y = event.clientY
+    game_window.onmousemove = (e) => {
+        let rawX = e.clientX
+        let rawY = e.clientY
+        if(rawX === undefined) {
+            rawX = e.changedTouches[0].pageX
+            rawY = e.changedTouches[0].pageY
+        }
+
+        cut_pos_x = rawX - game_window.offsetLeft
+        cut_pos_y = rawY - game_window.offsetTop
     }
+    game_window.addEventListener("touchmove", game_window.onmousemove)
 
     let save_form = document.getElementById("save_rec")
     save_form.onsubmit = (event) => {

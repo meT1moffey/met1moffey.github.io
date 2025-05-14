@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Bonzai';
-    src: url('/bonzai.ttf');
+    src: url('../bonzai.ttf');
 }
 
 html {
@@ -15,11 +15,11 @@ body {
     flex-flow: column;
     height: 100%;
     background-color: khaki;
-    /*cursor: url('/images/cursor.png'), auto;*/
+    cursor: url('../images/cursor.png'), auto;
 }
 
 #content {
-    background-image: url('/images/game-bg.jpg');
+    background-image: url('../images/game-bg.jpg');
     background-size: cover;
     flex-grow: 1;
     font-size: 40px;
